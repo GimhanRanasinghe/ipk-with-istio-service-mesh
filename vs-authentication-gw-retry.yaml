@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ipk-authentication-gw
+spec:
+  hosts:
+  - ipk-authentication-gw
+  http:
+  - route:
+    - destination:
+        host: ipk-authentication-gw
+    retries:
+      attempts: 5
+      perTryTimeout: 1s
+      retryOn: 5xx

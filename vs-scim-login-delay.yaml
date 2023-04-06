@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ipk-scim2-login
+spec:
+  hosts:
+  - ipk-scim2
+  http:
+  - fault:
+      delay:
+        percentage:
+          value: 100
+        fixedDelay: 7s
+    route:
+    - destination:
+        host: ipk-scim2
